@@ -46,6 +46,7 @@ function OnDeath()
     SetEntityInvincible(cache.ped, true)
     SetEntityHealth(cache.ped, GetEntityMaxHealth(cache.ped))
 
+    --[[
     TriggerServerEvent('cd_dispatch:AddNotification', {
         job_table = { "fire" },
         coords = pos,
@@ -63,6 +64,7 @@ function OnDeath()
             sound = 1,
         }
     })
+    ]]
 end
 
 exports('killPlayer', OnDeath)
