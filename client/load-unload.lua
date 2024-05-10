@@ -16,7 +16,13 @@ end
 ---@param metadata any
 local function initDeathAndLastStand(metadata)
     if metadata.isdead then
-        DeathTime = config.laststandReviveInterval
+        local doctorCount = lib.callback.await('qbx_ambulancejob:server:getNumDoctors', false)
+
+        if doctorCount < 2 then
+            DeathTime = 30
+        else
+            DeathTime = config.laststandReviveInterval
+        end
         OnDeath()
         AllowRespawn()
     elseif metadata.inlaststand then

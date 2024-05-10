@@ -1,27 +1,35 @@
-local isEscorted = false
 local vehicleDict = 'veh@low@front_ps@idle_duck'
 local vehicleAnim = 'sit'
 local LastStandCuffedDict = 'dead'
 local LastStandCuffedAnim = 'dead_f'
+local playerState = LocalPlayer.state
 
-function PlayUnescortedLastStandAnimation()
+function PlayUnescortedLastStandAnimation(ped)
+    ClearPedTasksImmediately(ped)
+
+    SetFacialIdleAnimOverride(ped, 'dead_1', 0)
+
     if cache.vehicle then
         lib.requestAnimDict(vehicleDict, 5000)
-        if not IsEntityPlayingAnim(cache.ped, vehicleDict, vehicleAnim, 3) then
-            TaskPlayAnim(cache.ped, vehicleDict, vehicleAnim, 1.0, 1.0, -1, 1, 0, false, false, false)
+        if not IsEntityPlayingAnim(ped, vehicleDict, vehicleAnim, 3) then
+            TaskPlayAnim(ped, vehicleDict, vehicleAnim, 1.0, 1.0, -1, 1, 0, false, false, false)
         end
     else
         local dict = not QBX.PlayerData.metadata.ishandcuffed and LastStandDict or LastStandCuffedDict
         local anim = not QBX.PlayerData.metadata.ishandcuffed and LastStandAnim or LastStandCuffedAnim
         lib.requestAnimDict(dict, 5000)
-        if not IsEntityPlayingAnim(cache.ped, dict, anim, 3) then
-            TaskPlayAnim(cache.ped, dict, anim, 1.0, 1.0, -1, 1, 0, false, false, false)
+        if not IsEntityPlayingAnim(ped, dict, anim, 3) then
+            TaskPlayAnim(ped, dict, anim, 1.0, 1.0, -1, 1, 0, false, false, false)
         end
     end
 end
 
 ---@param ped number
-local function playEscortedLastStandAnimation(ped)
+function PlayEscortedLastStandAnimation(ped)
+    ClearPedTasksImmediately(ped)
+
+    SetFacialIdleAnimOverride(ped, 'dead_1', 0)
+
     if cache.vehicle then
         lib.requestAnimDict(vehicleDict, 5000)
         if IsEntityPlayingAnim(ped, vehicleDict, vehicleAnim, 3) then
@@ -38,17 +46,11 @@ local function playEscortedLastStandAnimation(ped)
 end
 
 local function playLastStandAnimation()
-    if isEscorted then
-        playEscortedLastStandAnimation(cache.ped)
+    if playerState.isEscorted then
+        PlayEscortedLastStandAnimation(cache.ped)
     else
         PlayUnescortedLastStandAnimation()
     end
 end
 
 exports('playLastStandAnimationDeprecated', playLastStandAnimation)
-
----@param bool boolean
----TODO: this event name should be changed within qb-policejob to be generic
-AddEventHandler('hospital:client:isEscorted', function(bool)
-    isEscorted = bool
-end)

@@ -17,30 +17,30 @@ local weaponClasses = { -- Define gta weapon classe numbers
 
 return {
     weaponClasses = weaponClasses,
-    fadeOutTimer = 2, -- How many bleed ticks occur before fadeout happens
-    blackoutTimer = 10, -- How many bleed ticks occur before blacking out
-    bleedDamageTimer = 8, -- The base damage that is multiplied by bleed level everytime a bleed tick occurs
-    advanceBleedTimer = 10, -- How many bleed ticks occur before bleed level increases
-    bleedTickRate = 30, -- How much time, in seconds, between bleed ticks
-    bleedMovementTick = 10, -- How many seconds is taken away from the bleed tick rate if the player is walking, jogging, or sprinting
+    fadeOutTimer = 2,         -- How many bleed ticks occur before fadeout happens
+    blackoutTimer = 10,       -- How many bleed ticks occur before blacking out
+    bleedDamageTimer = 8,     -- The base damage that is multiplied by bleed level everytime a bleed tick occurs
+    advanceBleedTimer = 10,   -- How many bleed ticks occur before bleed level increases
+    bleedTickRate = 30,       -- How much time, in seconds, between bleed ticks
+    bleedMovementTick = 10,   -- How many seconds is taken away from the bleed tick rate if the player is walking, jogging, or sprinting
     bleedMovementAdvance = 3, -- How much time moving while bleeding adds
-    armorDamage = 5, -- Minumum damage done to armor before checking for injuries
-    messageTimer = 12, -- How long it will take to display limb/bleed message
-    alertShowInfo = 2, -- How many injuries a player must have before being alerted about them
-    headInjuryTimer = 30, -- How much time, in seconds, do head injury effects chance occur
-    armInjuryTimer = 30, -- How much time, in seconds, do arm injury effects chance occur
-    legInjuryTimer = 15, -- How much time, in seconds, do leg injury effects chance occur
-    headInjuryChance = 25, -- The chance, in percent, that head injury side-effects get applied
-    legInjuryChance = { -- The chance, in percent, that leg injury side-effects get applied
+    armorDamage = 5,          -- Minumum damage done to armor before checking for injuries
+    messageTimer = 12,        -- How long it will take to display limb/bleed message
+    alertShowInfo = 2,        -- How many injuries a player must have before being alerted about them
+    headInjuryTimer = 30,     -- How much time, in seconds, do head injury effects chance occur
+    armInjuryTimer = 30,      -- How much time, in seconds, do arm injury effects chance occur
+    legInjuryTimer = 15,      -- How much time, in seconds, do leg injury effects chance occur
+    headInjuryChance = 25,    -- The chance, in percent, that head injury side-effects get applied
+    legInjuryChance = {       -- The chance, in percent, that leg injury side-effects get applied
         running = 50,
         walking = 15,
     },
-    laststandReviveInterval = 360,
+    laststandReviveInterval = 200,
 
-    forceInjury = 35, -- Maximum amount of damage a player can take before limb damage & effects are forced to occur
-    healthDamage = 5, -- Minimum damage done to health before checking for injuries
+    forceInjury = 35,         -- Maximum amount of damage a player can take before limb damage & effects are forced to occur
+    healthDamage = 5,         -- Minimum damage done to health before checking for injuries
     maxInjuryChanceMulti = 3, -- Maximum chance of an injury from damage above healthDamage
-    forceInjuryWeapons = { -- Define which weapons will always cause injuries
+    forceInjuryWeapons = {    -- Define which weapons will always cause injuries
         [weaponClasses.HIGH_CALIBER] = true,
         [weaponClasses.HEAVY_IMPACT] = true,
         [weaponClasses.EXPLOSIVE] = true,
@@ -66,7 +66,7 @@ return {
     },
 
     majorArmoredBleedChance = 45, -- The chance, in percent, that a player will get a bleed effect when taking heavy damage while wearing armor
-    minorInjurWeapons = { -- Define which weapons cause small injuries
+    minorInjurWeapons = {         -- Define which weapons cause small injuries
         [weaponClasses.SMALL_CALIBER] = true,
         [weaponClasses.MEDIUM_CALIBER] = true,
         [weaponClasses.CUTTING] = true,
@@ -82,7 +82,7 @@ return {
         [weaponClasses.EXPLOSIVE] = true,
     },
 
-    damageMinorToMajor = 35, -- How much damage would have to be applied for a minor weapon to be considered a major damage event. Put this at 100 if you want to disable it
+    damageMinorToMajor = 35,     -- How much damage would have to be applied for a minor weapon to be considered a major damage event. Put this at 100 if you want to disable it
     alwaysBleedChanceWeapons = { -- Define which weapons will always cause bleedign
         [weaponClasses.SMALL_CALIBER] = true,
         [weaponClasses.MEDIUM_CALIBER] = true,
@@ -213,12 +213,12 @@ return {
         [`WEAPON_SAWNOFFSHOTGUN`] = weaponClasses.SHOTGUN,
         [`WEAPON_SWEEPERSHOTGUN`] = weaponClasses.SHOTGUN,
 
-        --[[ Animals ]] --
-        [`WEAPON_ANIMAL`] = weaponClasses.WILDLIFE, -- Animal
-        [`WEAPON_COUGAR`] = weaponClasses.WILDLIFE, -- Cougar
+        --[[ Animals ]]                                  --
+        [`WEAPON_ANIMAL`] = weaponClasses.WILDLIFE,      -- Animal
+        [`WEAPON_COUGAR`] = weaponClasses.WILDLIFE,      -- Cougar
         [`WEAPON_BARBED_WIRE`] = weaponClasses.WILDLIFE, -- Barbed Wire
 
-        --[[ Cutting Weapons ]] --
+        --[[ Cutting Weapons ]]                          --
         [`WEAPON_BATTLEAXE`] = weaponClasses.CUTTING,
         [`WEAPON_BOTTLE`] = weaponClasses.CUTTING,
         [`WEAPON_DAGGER`] = weaponClasses.CUTTING,
@@ -255,21 +255,21 @@ return {
         [`WEAPON_HELI_CRASH`] = weaponClasses.EXPLOSIVE,
         [`WEAPON_EMPLAUNCHER`] = weaponClasses.EXPLOSIVE,
 
-        --[[ Other ]] --
-        [`WEAPON_FALL`] = weaponClasses.OTHER, -- Fall
+        --[[ Other ]]                                         --
+        [`WEAPON_FALL`] = weaponClasses.OTHER,                -- Fall
         [`WEAPON_HIT_BY_WATER_CANNON`] = weaponClasses.OTHER, -- Water Cannon
 
-        --[[ Fire ]] --
+        --[[ Fire ]]                                          --
         [`WEAPON_ELECTRIC_FENCE`] = weaponClasses.FIRE,
         [`WEAPON_FIRE`] = weaponClasses.FIRE,
         [`WEAPON_MOLOTOV`] = weaponClasses.FIRE,
         [`WEAPON_FLARE`] = weaponClasses.FIRE,
         [`WEAPON_FLAREGUN`] = weaponClasses.FIRE,
 
-        --[[ Suffocate ]] --
-        [`WEAPON_DROWNING`] = weaponClasses.SUFFOCATING, -- Drowning
+        --[[ Suffocate ]]                                           --
+        [`WEAPON_DROWNING`] = weaponClasses.SUFFOCATING,            -- Drowning
         [`WEAPON_DROWNING_IN_VEHICLE`] = weaponClasses.SUFFOCATING, -- Drowning Veh
-        [`WEAPON_EXHAUSTION`] = weaponClasses.SUFFOCATING, -- Exhaust
+        [`WEAPON_EXHAUSTION`] = weaponClasses.SUFFOCATING,          -- Exhaust
         [`WEAPON_BZGAS`] = weaponClasses.SUFFOCATING,
         [`WEAPON_SMOKEGRENADE`] = weaponClasses.SUFFOCATING,
     },

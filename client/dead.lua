@@ -8,6 +8,8 @@ local function playDeadAnimation()
     local deadVehAnimDict = 'veh@low@front_ps@idle_duck'
     local deadVehAnim = 'sit'
 
+    --ClearPedTasksImmediately(cache.ped)
+
     if cache.vehicle then
         if not IsEntityPlayingAnim(cache.ped, deadVehAnimDict, deadVehAnim, 3) then
             lib.requestAnimDict(deadVehAnimDict, 5000)
@@ -43,6 +45,24 @@ function OnDeath()
     playDeadAnimation()
     SetEntityInvincible(cache.ped, true)
     SetEntityHealth(cache.ped, GetEntityMaxHealth(cache.ped))
+
+    TriggerServerEvent('cd_dispatch:AddNotification', {
+        job_table = { "fire" },
+        coords = pos,
+        title = "Downed Individual",
+        message = "Citizens reporting a downed individual.",
+        flash = 0,
+        unique_id = tostring(math.random(0000000, 9999999)),
+        blip = {
+            sprite = 366,
+            scale = 1.2,
+            colour = 1,
+            flashes = true,
+            text = "Downed Individual",
+            time = (5 * 60 * 1000),
+            sound = 1,
+        }
+    })
 end
 
 exports('killPlayer', OnDeath)
@@ -92,12 +112,15 @@ end)
 ---@param weapon string weapon hash
 local function logDeath(victim, attacker, weapon)
     local playerId = NetworkGetPlayerIndexFromPed(victim)
-    local playerName = (' %s (%d)'):format(GetPlayerName(playerId), GetPlayerServerId(playerId)) or Lang:t('info.self_death')
+    local playerName = (' %s (%d)'):format(GetPlayerName(playerId), GetPlayerServerId(playerId)) or
+        Lang:t('info.self_death')
     local killerId = NetworkGetPlayerIndexFromPed(attacker)
-    local killerName = ('%s (%d)'):format(GetPlayerName(killerId), GetPlayerServerId(killerId)) or Lang:t('info.self_death')
+    local killerName = ('%s (%d)'):format(GetPlayerName(killerId), GetPlayerServerId(killerId)) or
+        Lang:t('info.self_death')
     local weaponLabel = WEAPONS[weapon].label or 'Unknown'
     local weaponName = WEAPONS[weapon].name or 'Unknown'
-    local message = Lang:t('logs.death_log_message', { killername = killerName, playername = playerName, weaponlabel = weaponLabel, weaponname = weaponName })
+    local message = Lang:t('logs.death_log_message',
+        { killername = killerName, playername = playerName, weaponlabel = weaponLabel, weaponname = weaponName })
 
     lib.callback.await('qbx_medical:server:log', false, 'logDeath', message)
 end
@@ -113,7 +136,7 @@ AddEventHandler('gameEventTriggered', function(event, data)
         StartLastStand()
     elseif DeathState == sharedConfig.deathState.LAST_STAND then
         EndLastStand()
-        logDeath(victim, attacker, weapon)
+        --logDeath(victim, attacker, weapon)
         DeathTime = 0
         OnDeath()
         AllowRespawn()

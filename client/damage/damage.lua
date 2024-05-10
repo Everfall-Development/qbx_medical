@@ -18,7 +18,7 @@ end
 ---@param weaponHash number
 local function createInjury(bodyPartKey, weaponHash)
     local severity = math.random(1, 3)
-    SetInjury(bodyPartKey, {severity = severity, weaponHash = weaponHash} )
+    SetInjury(bodyPartKey, { severity = severity, weaponHash = weaponHash })
     NumInjuries += 1
 end
 
@@ -82,7 +82,7 @@ end
 ---@param armor number
 local function applyImmediateMinorEffects(ped, bodyPartKey, armor)
     if config.criticalAreas[bodyPartKey] and armor <= 0 then
-       ApplyBleed(1)
+        ApplyBleed(1)
     end
 
     local staggerArea = config.staggerAreas[bodyPartKey]
@@ -199,17 +199,19 @@ local function checkForDamage()
     initHealthAndArmorIfNotSet(health, armor)
 
     local isArmorDamaged = (playerArmor ~= armor and armor < (playerArmor - config.armorDamage) and armor > 0) -- Players armor was damaged
-    local isHealthDamaged = (Hp ~= health) -- Players health was damaged
+    local isHealthDamaged = (Hp ~= health)                                                                     -- Players health was damaged
 
     if isArmorDamaged or isHealthDamaged then
         local damageDone = (Hp - health)
         local weaponHash = applyDamage(cache.ped, damageDone, isArmorDamaged)
         if weaponHash and not WeaponsThatDamagedPlayer[weaponHash] then
+            --[[
             TriggerEvent('chat:addMessage', {
                 color = { 255, 0, 0 },
                 multiline = false,
                 args = { Lang:t('info.status'), WEAPONS[weaponHash].damagereason }
             })
+            ]]
             WeaponsThatDamagedPlayer[weaponHash] = true
         end
         ClearEntityLastDamageEntity(cache.ped)

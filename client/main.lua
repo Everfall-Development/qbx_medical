@@ -98,7 +98,7 @@ local function doLimbAlert()
         local i = 0
         for bodyPartKey, injury in pairs(Injuries) do
             local bodyPart = sharedConfig.bodyParts[bodyPartKey]
-            limbDamageMsg = limbDamageMsg .. Lang:t('info.pain_message', { limb = bodyPart.label, severity = sharedConfig.woundLevels[injury.severity].label})
+            limbDamageMsg = limbDamageMsg .. Lang:t('info.pain_message', { limb = bodyPart.label, severity = sharedConfig.woundLevels[injury.severity].label })
             i += 1
             if i < NumInjuries then
                 limbDamageMsg = limbDamageMsg .. ' | '
@@ -164,7 +164,7 @@ end
 ---notify the player of bleeding to their body.
 function SendBleedAlert()
     if DeathState == sharedConfig.deathState.DEAD or BleedLevel == 0 then return end
-    exports.qbx_core:Notify(Lang:t('info.bleed_alert', {bleedstate = sharedConfig.bleedingStates[BleedLevel]}), 'inform')
+    exports.qbx_core:Notify(Lang:t('info.bleed_alert', { bleedstate = sharedConfig.bleedingStates[BleedLevel] }), 'inform')
 end
 
 exports('sendBleedAlert', SendBleedAlert)
@@ -202,8 +202,10 @@ end)
 
 ---Revives player, healing all injuries
 RegisterNetEvent('qbx_medical:client:playerRevived', function()
+    lib.print.debug("qbx_medical:client:playerRevived", 'DeathState', DeathState, 'sharedConfig.deathState.ALIVE', sharedConfig.deathState.ALIVE)
+
     if DeathState ~= sharedConfig.deathState.ALIVE then
-        local pos = GetEntityCoords(cache.ped, true)
+        local pos = GetEntityCoords(cache.ped)
         NetworkResurrectLocalPlayer(pos.x, pos.y, pos.z, GetEntityHeading(cache.ped), true, false)
         SetDeathState(sharedConfig.deathState.ALIVE)
         SetEntityInvincible(cache.ped, false)
