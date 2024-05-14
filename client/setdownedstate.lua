@@ -5,7 +5,7 @@ local LastStandCuffedAnim = 'dead_f'
 local playerState = LocalPlayer.state
 
 function PlayUnescortedLastStandAnimation(ped)
-    ClearPedTasksImmediately(ped)
+    ClearPedTasks(ped)
 
     SetFacialIdleAnimOverride(ped, 'dead_1', 0)
 
@@ -26,7 +26,7 @@ end
 
 ---@param ped number
 function PlayEscortedLastStandAnimation(ped)
-    ClearPedTasksImmediately(ped)
+    ClearPedTasks(ped)
 
     SetFacialIdleAnimOverride(ped, 'dead_1', 0)
 
