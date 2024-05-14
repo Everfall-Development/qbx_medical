@@ -29,7 +29,7 @@ function OnDeath()
     SetDeathState(sharedConfig.deathState.DEAD)
     TriggerEvent('qbx_medical:client:onPlayerDied')
     TriggerServerEvent('qbx_medical:server:onPlayerDied')
-    TriggerServerEvent('InteractSound_SV:PlayOnSource', 'demo', 0.1)
+    TriggerEvent('InteractSound_CL:PlayOnOne', 'demo', 0.1)
 
     WaitForPlayerToStopMoving()
 

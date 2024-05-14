@@ -78,7 +78,7 @@ function StartLastStand()
 
     Wait(1000)
     WaitForPlayerToStopMoving()
-    TriggerServerEvent('InteractSound_SV:PlayOnSource', 'demo', 0.1)
+    TriggerEvent('InteractSound_CL:PlayOnOne', 'demo', 0.1)
     LaststandTime = config.laststandReviveInterval
     ResurrectPlayer()
     SetEntityHealth(cache.ped, 150)
