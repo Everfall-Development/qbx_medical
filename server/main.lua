@@ -34,7 +34,8 @@ AddStateBagChangeHandler(DEATH_STATE_STATE_BAG, nil, function(bagName, _, value)
 	local player = exports.qbx_core:GetPlayer(playerId)
 	player.Functions.SetMetaData('isdead', value == sharedConfig.deathState.DEAD)
 	player.Functions.SetMetaData('inlaststand', value == sharedConfig.deathState.LAST_STAND)
-	Player(playerId).state:set("isDead", value == sharedConfig.deathState.DEAD or value == sharedConfig.deathState.LAST_STAND, true)
+	Player(playerId).state:set("isDead",
+		value == sharedConfig.deathState.DEAD or value == sharedConfig.deathState.LAST_STAND, true)
 end)
 
 ---@param player table|number
@@ -97,9 +98,9 @@ local function getPlayerStatus(src)
 	local weaponsThatDamagedPlayer = {}
 	local i = 0
 	for bodyPartKey, injury in pairs(injuries) do
-        local bodyPart = sharedConfig.bodyParts[bodyPartKey]
+		local bodyPart = sharedConfig.bodyParts[bodyPartKey]
 		i += 1
-        injuryStatuses[i] = bodyPart.label .. ' (' .. sharedConfig.woundLevels[injury.severity].label .. ')'
+		injuryStatuses[i] = bodyPart.label .. ' (' .. sharedConfig.woundLevels[injury.severity].label .. ')'
 		weaponsThatDamagedPlayer[injury.weaponHash] = true
 	end
 
@@ -134,11 +135,11 @@ end
 lib.callback.register('qbx_medical:server:resetHungerAndThirst', resetHungerAndThirst)
 
 lib.addCommand('revive', {
-    help = Lang:t('info.revive_player_a'),
+	help = Lang:t('info.revive_player_a'),
 	restricted = 'group.admin',
 	params = {
-        { name = 'id', help = Lang:t('info.player_id'), type = 'playerId', optional = true },
-    }
+		{ name = 'id', help = Lang:t('info.player_id'), type = 'playerId', optional = true },
+	}
 }, function(source, args)
 	if not args.id then args.id = source end
 	local player = exports.qbx_core:GetPlayer(tonumber(args.id))
@@ -147,14 +148,15 @@ lib.addCommand('revive', {
 		return
 	end
 	revivePlayer(args.id)
+	resetHungerAndThirst(args.id)
 end)
 
 lib.addCommand('kill', {
-    help =  Lang:t('info.kill'),
+	help = Lang:t('info.kill'),
 	restricted = 'group.admin',
 	params = {
-        { name = 'id', help = Lang:t('info.player_id'), type = 'playerId', optional = true },
-    }
+		{ name = 'id', help = Lang:t('info.player_id'), type = 'playerId', optional = true },
+	}
 }, function(source, args)
 	if not args.id then args.id = source end
 	local player = exports.qbx_core:GetPlayer(tonumber(args.id))
@@ -166,11 +168,11 @@ lib.addCommand('kill', {
 end)
 
 lib.addCommand('aheal', {
-    help =  Lang:t('info.heal_player_a'),
+	help = Lang:t('info.heal_player_a'),
 	restricted = 'group.admin',
 	params = {
-        { name = 'id', help = Lang:t('info.player_id'), type = 'playerId', optional = true },
-    }
+		{ name = 'id', help = Lang:t('info.player_id'), type = 'playerId', optional = true },
+	}
 }, function(source, args)
 	if not args.id then args.id = source end
 	local player = exports.qbx_core:GetPlayer(tonumber(args.id))
@@ -182,11 +184,11 @@ lib.addCommand('aheal', {
 end)
 
 lib.callback.register('qbx_medical:server:respawn', function(source)
-	if not triggerEventHooks('respawn', {source = source}) then return false end
+	if not triggerEventHooks('respawn', { source = source }) then return false end
 	TriggerEvent('qbx_medical:server:playerRespawned', source)
 	return true
 end)
 
 lib.callback.register('qbx_medical:server:log', function(_, event, message)
-	logger.log({source = 'qbx_medical', event = event, message = message})
+	logger.log({ source = 'qbx_medical', event = event, message = message })
 end)
