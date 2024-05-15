@@ -10,7 +10,7 @@ function PlayUnescortedLastStandAnimation(ped)
 
     SetFacialIdleAnimOverride(ped, 'dead_1', 0)
 
-    while playerState.isDead == sharedConfig.deathState.LAST_STAND do
+    while DeathState == sharedConfig.deathState.LAST_STAND do
         if cache.vehicle then
             lib.requestAnimDict(vehicleDict, 5000)
             if not IsEntityPlayingAnim(ped, vehicleDict, vehicleAnim, 3) then
@@ -25,7 +25,7 @@ function PlayUnescortedLastStandAnimation(ped)
             end
         end
 
-        Wait(100)
+        Wait(0)
     end
 end
 
@@ -35,7 +35,7 @@ function PlayEscortedLastStandAnimation(ped)
 
     SetFacialIdleAnimOverride(ped, 'dead_1', 0)
 
-    while playerState.isDead == sharedConfig.deathState.LAST_STAND do
+    while DeathState == sharedConfig.deathState.LAST_STAND do
         if cache.vehicle then
             lib.requestAnimDict(vehicleDict, 5000)
             if IsEntityPlayingAnim(ped, vehicleDict, vehicleAnim, 3) then
@@ -50,7 +50,7 @@ function PlayEscortedLastStandAnimation(ped)
             end
         end
 
-        Wait(100)
+        Wait(0)
     end
 end
 

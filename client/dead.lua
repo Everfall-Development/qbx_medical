@@ -2,15 +2,15 @@ local sharedConfig = require 'config.shared'
 local WEAPONS = exports.qbx_core:GetWeapons()
 local allowRespawn = false
 
+local deadAnimDict = 'dead'
+local deadVehAnimDict = 'veh@low@front_ps@idle_duck'
+local deadVehAnim = 'sit'
 local function playDeadAnimation()
-    local deadAnimDict = 'dead'
     local deadAnim = not QBX.PlayerData.metadata.ishandcuffed and 'dead_a' or 'dead_f'
-    local deadVehAnimDict = 'veh@low@front_ps@idle_duck'
-    local deadVehAnim = 'sit'
 
     --ClearPedTasksImmediately(cache.ped)
 
-    while playerState.isDead == sharedConfig.deathState.DEAD do
+    while DeathState == sharedConfig.deathState.DEAD do
         if cache.vehicle then
             if not IsEntityPlayingAnim(cache.ped, deadVehAnimDict, deadVehAnim, 3) then
                 lib.requestAnimDict(deadVehAnimDict, 5000)
@@ -20,6 +20,8 @@ local function playDeadAnimation()
             lib.requestAnimDict(deadAnimDict, 5000)
             TaskPlayAnim(cache.ped, deadAnimDict, deadAnim, 1.0, 1.0, -1, 1, 0, false, false, false)
         end
+
+        Wait(0)
     end
 end
 
@@ -44,7 +46,9 @@ function OnDeath()
     end)
 
     ResurrectPlayer()
-    playDeadAnimation()
+    CreateThread(function()
+        playDeadAnimation()
+    end)
     SetEntityInvincible(cache.ped, true)
     SetEntityHealth(cache.ped, GetEntityMaxHealth(cache.ped))
 
