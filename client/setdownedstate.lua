@@ -1,3 +1,4 @@
+local sharedConfig = require 'config.shared'
 local vehicleDict = 'veh@low@front_ps@idle_duck'
 local vehicleAnim = 'sit'
 local LastStandCuffedDict = 'dead'
@@ -9,18 +10,22 @@ function PlayUnescortedLastStandAnimation(ped)
 
     SetFacialIdleAnimOverride(ped, 'dead_1', 0)
 
-    if cache.vehicle then
-        lib.requestAnimDict(vehicleDict, 5000)
-        if not IsEntityPlayingAnim(ped, vehicleDict, vehicleAnim, 3) then
-            TaskPlayAnim(ped, vehicleDict, vehicleAnim, 1.0, 1.0, -1, 1, 0, false, false, false)
+    while playerState.isDead == sharedConfig.deathState.LAST_STAND do
+        if cache.vehicle then
+            lib.requestAnimDict(vehicleDict, 5000)
+            if not IsEntityPlayingAnim(ped, vehicleDict, vehicleAnim, 3) then
+                TaskPlayAnim(ped, vehicleDict, vehicleAnim, 1.0, 1.0, -1, 1, 0, false, false, false)
+            end
+        else
+            local dict = not QBX.PlayerData.metadata.ishandcuffed and LastStandDict or LastStandCuffedDict
+            local anim = not QBX.PlayerData.metadata.ishandcuffed and LastStandAnim or LastStandCuffedAnim
+            lib.requestAnimDict(dict, 5000)
+            if not IsEntityPlayingAnim(ped, dict, anim, 3) then
+                TaskPlayAnim(ped, dict, anim, 1.0, 1.0, -1, 1, 0, false, false, false)
+            end
         end
-    else
-        local dict = not QBX.PlayerData.metadata.ishandcuffed and LastStandDict or LastStandCuffedDict
-        local anim = not QBX.PlayerData.metadata.ishandcuffed and LastStandAnim or LastStandCuffedAnim
-        lib.requestAnimDict(dict, 5000)
-        if not IsEntityPlayingAnim(ped, dict, anim, 3) then
-            TaskPlayAnim(ped, dict, anim, 1.0, 1.0, -1, 1, 0, false, false, false)
-        end
+
+        Wait(100)
     end
 end
 
@@ -30,18 +35,22 @@ function PlayEscortedLastStandAnimation(ped)
 
     SetFacialIdleAnimOverride(ped, 'dead_1', 0)
 
-    if cache.vehicle then
-        lib.requestAnimDict(vehicleDict, 5000)
-        if IsEntityPlayingAnim(ped, vehicleDict, vehicleAnim, 3) then
-            StopAnimTask(ped, vehicleDict, vehicleAnim, 3)
+    while playerState.isDead == sharedConfig.deathState.LAST_STAND do
+        if cache.vehicle then
+            lib.requestAnimDict(vehicleDict, 5000)
+            if IsEntityPlayingAnim(ped, vehicleDict, vehicleAnim, 3) then
+                StopAnimTask(ped, vehicleDict, vehicleAnim, 3)
+            end
+        else
+            local dict = not QBX.PlayerData.metadata.ishandcuffed and LastStandDict or LastStandCuffedDict
+            local anim = not QBX.PlayerData.metadata.ishandcuffed and LastStandAnim or LastStandCuffedAnim
+            lib.requestAnimDict(dict, 5000)
+            if IsEntityPlayingAnim(ped, dict, anim, 3) then
+                StopAnimTask(ped, dict, anim, 3)
+            end
         end
-    else
-        local dict = not QBX.PlayerData.metadata.ishandcuffed and LastStandDict or LastStandCuffedDict
-        local anim = not QBX.PlayerData.metadata.ishandcuffed and LastStandAnim or LastStandCuffedAnim
-        lib.requestAnimDict(dict, 5000)
-        if IsEntityPlayingAnim(ped, dict, anim, 3) then
-            StopAnimTask(ped, dict, anim, 3)
-        end
+
+        Wait(100)
     end
 end
 

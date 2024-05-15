@@ -10,14 +10,16 @@ local function playDeadAnimation()
 
     --ClearPedTasksImmediately(cache.ped)
 
-    if cache.vehicle then
-        if not IsEntityPlayingAnim(cache.ped, deadVehAnimDict, deadVehAnim, 3) then
-            lib.requestAnimDict(deadVehAnimDict, 5000)
-            TaskPlayAnim(cache.ped, deadVehAnimDict, deadVehAnim, 1.0, 1.0, -1, 1, 0, false, false, false)
+    while playerState.isDead == sharedConfig.deathState.DEAD do
+        if cache.vehicle then
+            if not IsEntityPlayingAnim(cache.ped, deadVehAnimDict, deadVehAnim, 3) then
+                lib.requestAnimDict(deadVehAnimDict, 5000)
+                TaskPlayAnim(cache.ped, deadVehAnimDict, deadVehAnim, 1.0, 1.0, -1, 1, 0, false, false, false)
+            end
+        elseif not IsEntityPlayingAnim(cache.ped, deadAnimDict, deadAnim, 3) then
+            lib.requestAnimDict(deadAnimDict, 5000)
+            TaskPlayAnim(cache.ped, deadAnimDict, deadAnim, 1.0, 1.0, -1, 1, 0, false, false, false)
         end
-    elseif not IsEntityPlayingAnim(cache.ped, deadAnimDict, deadAnim, 3) then
-        lib.requestAnimDict(deadAnimDict, 5000)
-        TaskPlayAnim(cache.ped, deadAnimDict, deadAnim, 1.0, 1.0, -1, 1, 0, false, false, false)
     end
 end
 
