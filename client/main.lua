@@ -141,6 +141,7 @@ local function resetMinorInjuries()
     MakePedLimp()
     doLimbAlert()
 end
+exports('resetMinorInjuries', resetMinorInjuries)
 
 local function resetAllInjuries()
     for bodyPartKey in pairs(sharedConfig.bodyParts) do
