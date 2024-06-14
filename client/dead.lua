@@ -164,4 +164,6 @@ function DisableControls()
     EnableControlAction(0, 249, true)
     EnableControlAction(0, 46, true)
     EnableControlAction(0, 47, true)
+
+    SetPedResetFlag(cache.ped, 309, 1) -- Prevents ped from doing in vehicle actions like closing door, hotwiring, starting engine, putting on helmet etc
 end
