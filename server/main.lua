@@ -45,6 +45,9 @@ local function revivePlayer(player)
 	if type(player) == 'number' then
 		player = exports.qbx_core:GetPlayer(player)
 	end
+
+	if not player then return end
+
 	TriggerClientEvent('qbx_medical:client:playerRevived', player.PlayerData.source)
 end
 
