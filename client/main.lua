@@ -192,6 +192,8 @@ lib.callback.register('qbx_medical:client:heal', function(type)
         resetMinorInjuries()
     end
     exports.qbx_core:Notify(Lang:t('success.wounds_healed'), 'success')
+
+    return true
 end)
 
 CreateThread(function()
