@@ -40,6 +40,10 @@ local function onPlayerLoaded()
     end)
 end
 
+lib.onCache('ped', function(value)
+    initHealthAndArmor(value, cache.playerId, QBX.PlayerData.metadata)
+end)
+
 AddEventHandler('QBCore:Client:OnPlayerLoaded', onPlayerLoaded)
 
 AddEventHandler('onResourceStart', function(resourceName)
