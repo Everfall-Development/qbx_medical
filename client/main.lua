@@ -220,6 +220,7 @@ RegisterNetEvent('qbx_medical:client:playerRevived', function()
         SetDeathState(sharedConfig.deathState.ALIVE)
         SetEntityInvincible(cache.ped, false)
         EndLastStand()
+        LocalPlayer.state:set('invBusy', false, false)
     end
 
     SetEntityMaxHealth(cache.ped, 200)

@@ -46,6 +46,7 @@ function OnDeath()
     end)
 
     ResurrectPlayer()
+    LocalPlayer.state:set('invBusy', true, false)
     CreateThread(function()
         playDeadAnimation()
     end)
