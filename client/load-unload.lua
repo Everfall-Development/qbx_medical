@@ -41,6 +41,8 @@ local function onPlayerLoaded()
 end
 
 lib.onCache('ped', function(value)
+    if not QBX?.PlayerData?.metadata then return end
+
     initHealthAndArmor(value, cache.playerId, QBX.PlayerData.metadata)
 end)
 
