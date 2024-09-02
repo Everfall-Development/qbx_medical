@@ -209,7 +209,14 @@ RegisterNetEvent('qbx_medical:client:playerRevived', function()
 
     if DeathState ~= sharedConfig.deathState.ALIVE then
         local pos = GetEntityCoords(cache.ped)
+        local vehicle = cache.vehicle
+        local seat = cache.seat
         NetworkResurrectLocalPlayer(pos.x, pos.y, pos.z, GetEntityHeading(cache.ped), true, false)
+
+        if vehicle then
+            SetPedIntoVehicle(cache.ped, vehicle, seat)
+        end
+
         SetDeathState(sharedConfig.deathState.ALIVE)
         SetEntityInvincible(cache.ped, false)
         EndLastStand()
