@@ -8,17 +8,17 @@ local deadVehAnim = 'sit'
 local function playDeadAnimation()
     local deadAnim = not QBX.PlayerData.metadata.ishandcuffed and 'dead_a' or 'dead_f'
 
-    --ClearPedTasksImmediately(cache.ped)
+    ClearPedTasksImmediately(cache.ped)
 
     while DeathState == sharedConfig.deathState.DEAD do
         if cache.vehicle then
             if not IsEntityPlayingAnim(cache.ped, deadVehAnimDict, deadVehAnim, 3) then
                 lib.requestAnimDict(deadVehAnimDict, 5000)
-                TaskPlayAnim(cache.ped, deadVehAnimDict, deadVehAnim, 1.0, 1.0, -1, 1, 0, false, false, false)
+                TaskPlayAnim(cache.ped, deadVehAnimDict, deadVehAnim, 100.0, 100.0, -1, 1, 0, false, false, false)
             end
         elseif not IsEntityPlayingAnim(cache.ped, deadAnimDict, deadAnim, 3) then
             lib.requestAnimDict(deadAnimDict, 5000)
-            TaskPlayAnim(cache.ped, deadAnimDict, deadAnim, 1.0, 1.0, -1, 1, 0, false, false, false)
+            TaskPlayAnim(cache.ped, deadAnimDict, deadAnim, 100.0, 100.0, -1, 1, 0, false, false, false)
         end
 
         Wait(0)
@@ -35,7 +35,7 @@ function OnDeath()
     TriggerServerEvent('qbx_medical:server:onPlayerDied')
     TriggerEvent('InteractSound_CL:PlayOnOne', 'demo', 0.1)
 
-    WaitForPlayerToStopMoving()
+    --WaitForPlayerToStopMoving()
 
     CreateThread(function()
         while DeathState == sharedConfig.deathState.DEAD do
@@ -46,10 +46,10 @@ function OnDeath()
     end)
 
     ResurrectPlayer()
-    LocalPlayer.state:set('invBusy', true, false)
     CreateThread(function()
         playDeadAnimation()
     end)
+    LocalPlayer.state:set('invBusy', true, false)
     SetEntityInvincible(cache.ped, true)
     SetEntityHealth(cache.ped, GetEntityMaxHealth(cache.ped))
 

@@ -14,14 +14,14 @@ function PlayUnescortedLastStandAnimation(ped)
         if cache.vehicle then
             lib.requestAnimDict(vehicleDict, 5000)
             if not IsEntityPlayingAnim(ped, vehicleDict, vehicleAnim, 3) then
-                TaskPlayAnim(ped, vehicleDict, vehicleAnim, 1.0, 1.0, -1, 1, 0, false, false, false)
+                TaskPlayAnim(ped, vehicleDict, vehicleAnim, 100.0, 100.0, -1, 1, 0, false, false, false)
             end
         else
             local dict = not QBX.PlayerData.metadata.ishandcuffed and LastStandDict or LastStandCuffedDict
             local anim = not QBX.PlayerData.metadata.ishandcuffed and LastStandAnim or LastStandCuffedAnim
             lib.requestAnimDict(dict, 5000)
             if not IsEntityPlayingAnim(ped, dict, anim, 3) then
-                TaskPlayAnim(ped, dict, anim, 1.0, 1.0, -1, 1, 0, false, false, false)
+                TaskPlayAnim(ped, dict, anim, 100.0, 100.0, -1, 1, 0, false, false, false)
             end
         end
 

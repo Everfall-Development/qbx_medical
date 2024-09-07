@@ -16,15 +16,17 @@ function ResurrectPlayer()
     local pos = GetEntityCoords(cache.ped)
     local heading = GetEntityHeading(cache.ped)
 
-    NetworkResurrectLocalPlayer(pos.x, pos.y, pos.z + 0.5, heading, true, false)
+    NetworkResurrectLocalPlayer(pos.x, pos.y, pos.z, heading, true, false)
     if cache.vehicle then
         SetPedIntoVehicle(cache.ped, cache.vehicle, cache.seat)
     end
+    SetEntityCoords(cache.ped, pos.x, pos.y, pos.z)
+    ClearPedTasksImmediately(cache.ped)
 end
 
 ---remove last stand mode from player.
 function EndLastStand()
-    TaskPlayAnim(cache.ped, LastStandDict, 'exit', 1.0, 8.0, -1, 1, -1, false, false, false)
+    TaskPlayAnim(cache.ped, LastStandDict, 'exit', 8.0, 8.0, -1, 1, -1, false, false, false)
     LaststandTime = 0
     TriggerServerEvent('qbx_medical:server:onPlayerLaststandEnd')
 end
