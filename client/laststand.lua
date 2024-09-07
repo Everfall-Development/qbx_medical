@@ -1,12 +1,11 @@
 local config = require 'config.client'
 local sharedConfig = require 'config.shared'
 local WEAPONS = exports.qbx_core:GetWeapons()
-local playerState = LocalPlayer.state
 
 ---blocks until ped is no longer moving
 function WaitForPlayerToStopMoving()
     local timeOut = 10000
-    while GetEntitySpeed(cache.ped) > 1.0 or IsPedRagdoll(cache.ped) and timeOut > 1 do
+    while GetEntitySpeed(cache.ped) > 1.0 or IsPedRagdoll(cache.ped) and (GetEntitySpeed(cache.ped) > 0.1) and timeOut > 1 do
         timeOut -= 10
         Wait(10)
     end
@@ -76,7 +75,7 @@ function StartLastStand()
         exports["lb-phone"]:ToggleOpen(false)
     end
 
-    Wait(1000)
+    --Wait(1000)
     WaitForPlayerToStopMoving()
     TriggerEvent('InteractSound_CL:PlayOnOne', 'demo', 0.1)
     LaststandTime = config.laststandReviveInterval
