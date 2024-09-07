@@ -27,6 +27,8 @@ function PlayUnescortedLastStandAnimation(ped)
 
         Wait(0)
     end
+
+    ClearFacialIdleAnimOverride(cache.ped)
 end
 
 ---@param ped number
@@ -52,6 +54,8 @@ function PlayEscortedLastStandAnimation(ped)
 
         Wait(0)
     end
+
+    ClearFacialIdleAnimOverride(cache.ped)
 end
 
 local function playLastStandAnimation()
