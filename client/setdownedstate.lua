@@ -8,6 +8,8 @@ local playerState = LocalPlayer.state
 function PlayUnescortedLastStandAnimation(ped)
     ClearPedTasks(ped)
 
+    SetPedCanRagdoll(cache.ped, false)
+
     SetFacialIdleAnimOverride(ped, 'dead_1', 0)
 
     while DeathState == sharedConfig.deathState.LAST_STAND do
@@ -27,6 +29,8 @@ function PlayUnescortedLastStandAnimation(ped)
 
         Wait(0)
     end
+
+    SetPedCanRagdoll(cache.ped, true)
 
     ClearFacialIdleAnimOverride(cache.ped)
 end

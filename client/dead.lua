@@ -9,20 +9,23 @@ local function playDeadAnimation()
     local deadAnim = not QBX.PlayerData.metadata.ishandcuffed and 'dead_a' or 'dead_f'
 
     ClearPedTasksImmediately(cache.ped)
+    SetPedCanRagdoll(cache.ped, false)
 
     while DeathState == sharedConfig.deathState.DEAD do
         if cache.vehicle then
-            if not IsEntityPlayingAnim(cache.ped, deadVehAnimDict, deadVehAnim, 3) then
-                lib.requestAnimDict(deadVehAnimDict, 5000)
-                TaskPlayAnim(cache.ped, deadVehAnimDict, deadVehAnim, 100.0, 100.0, -1, 1, 0, false, false, false)
-            end
-        elseif not IsEntityPlayingAnim(cache.ped, deadAnimDict, deadAnim, 3) then
+            --if not IsEntityPlayingAnim(cache.ped, deadVehAnimDict, deadVehAnim, 3) then
+            lib.requestAnimDict(deadVehAnimDict, 5000)
+            TaskPlayAnim(cache.ped, deadVehAnimDict, deadVehAnim, 100.0, 100.0, -1, 1, 0, false, false, false)
+            -- end
+        else --if not IsEntityPlayingAnim(cache.ped, deadAnimDict, deadAnim, 3) then
             lib.requestAnimDict(deadAnimDict, 5000)
             TaskPlayAnim(cache.ped, deadAnimDict, deadAnim, 100.0, 100.0, -1, 1, 0, false, false, false)
         end
 
         Wait(0)
     end
+
+    SetPedCanRagdoll(cache.ped, true)
 end
 
 exports('playDeadAnimation', playDeadAnimation)
