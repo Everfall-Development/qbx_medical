@@ -8,7 +8,7 @@ local deadVehAnim = 'sit'
 local function playDeadAnimation()
     local deadAnim = not QBX.PlayerData.metadata.ishandcuffed and 'dead_a' or 'dead_f'
 
-    ClearPedTasksImmediately(cache.ped)
+    ClearPedTasks(cache.ped)
     SetPedCanRagdoll(cache.ped, false)
 
     while DeathState == sharedConfig.deathState.DEAD do

@@ -19,9 +19,11 @@ function ResurrectPlayer()
     NetworkResurrectLocalPlayer(pos.x, pos.y, pos.z, heading, true, false)
     if cache.vehicle then
         SetPedIntoVehicle(cache.ped, cache.vehicle, cache.seat)
+    else
+        SetEntityCoords(cache.ped, pos.x, pos.y, pos.z)
     end
-    SetEntityCoords(cache.ped, pos.x, pos.y, pos.z)
-    ClearPedTasksImmediately(cache.ped)
+
+    --ClearPedTasksImmediately(cache.ped)
 end
 
 ---remove last stand mode from player.
