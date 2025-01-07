@@ -5,6 +5,8 @@ local config = require 'config.client'
 ---@param playerId number
 ---@param playerMetadata any
 local function initHealthAndArmor(ped, playerId, playerMetadata)
+    if not playerMetadata then return end
+
     SetEntityMaxHealth(ped, 200)
     SetEntityHealth(ped, playerMetadata.health)
     SetPlayerHealthRechargeMultiplier(playerId, 0.0)
@@ -33,15 +35,13 @@ end
 ---initialize settings from player object
 local function onPlayerLoaded()
     pcall(function() exports.spawnmanager:setAutoSpawn(false) end)
-    CreateThread(function()
-        Wait(1000)
-        initHealthAndArmor(cache.ped, cache.playerId, QBX.PlayerData.metadata)
-        initDeathAndLastStand(QBX.PlayerData.metadata)
-    end)
+
+    initHealthAndArmor(cache.ped, cache.playerId, QBX.PlayerData.metadata)
+    initDeathAndLastStand(QBX.PlayerData.metadata)
 end
 
 lib.onCache('ped', function(value)
-    if not QBX?.PlayerData?.metadata then return end
+    if not LocalPlayer.state.isLoggedIn then return end
 
     initHealthAndArmor(value, cache.playerId, QBX.PlayerData.metadata)
 end)

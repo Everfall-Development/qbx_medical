@@ -9,8 +9,6 @@ local logger = require '@qbx_core.modules.logger'
 ---@field injuries table<BodyPartKey, Injury>
 ---@field isBleeding number
 
----@alias Source number
-
 local triggerEventHooks = require '@qbx_core.modules.hooks'
 
 local function getDeathState(src)
