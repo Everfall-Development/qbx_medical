@@ -10,7 +10,7 @@ function PlayUnescortedLastStandAnimation(ped)
 
     SetPedCanRagdoll(cache.ped, false)
 
-    SetFacialIdleAnimOverride(ped, 'dead_1', 0)
+    SetFacialIdleAnimOverride(ped, 'dead_1', 'facials@p_m_two@base')
 
     while DeathState == sharedConfig.deathState.LAST_STAND do
         if cache.vehicle then

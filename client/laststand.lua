@@ -4,6 +4,7 @@ local WEAPONS = exports.qbx_core:GetWeapons()
 
 ---blocks until ped is no longer moving
 function WaitForPlayerToStopMoving()
+    Wait(500) -- Maybe I have to wait a tiny bit, sometimes the death state doesn't commit, and people can walk around while dead
     local timeOut = 10000
     while GetEntitySpeed(cache.ped) > 1.0 or IsPedRagdoll(cache.ped) and (GetEntitySpeed(cache.ped) > 0.1) and timeOut > 1 do
         timeOut -= 10
@@ -16,7 +17,7 @@ function ResurrectPlayer()
     local pos = GetEntityCoords(cache.ped)
     local heading = GetEntityHeading(cache.ped)
 
-    NetworkResurrectLocalPlayer(pos.x, pos.y, pos.z, heading, true, false)
+    NetworkResurrectLocalPlayer(pos.x, pos.y, pos.z, heading, 99999, false)
     if cache.vehicle then
         SetPedIntoVehicle(cache.ped, cache.vehicle, cache.seat)
     else
@@ -81,12 +82,15 @@ function StartLastStand()
 
     --Wait(1000)
     WaitForPlayerToStopMoving()
+
     TriggerEvent('InteractSound_CL:PlayOnOne', 'demo', 0.1)
     LaststandTime = config.laststandReviveInterval
     ResurrectPlayer()
     SetEntityHealth(cache.ped, 150)
     SetDeathState(sharedConfig.deathState.LAST_STAND)
+
     LocalPlayer.state:set('invBusy', true, false)
+
     CreateThread(function()
         PlayUnescortedLastStandAnimation(cache.ped)
     end)
