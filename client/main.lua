@@ -185,12 +185,14 @@ end
 
 ---heals player wounds.
 ---@param type? 'full'|any heals all wounds if full otherwise heals only major wounds.
+---@return boolean
 lib.callback.register('qbx_medical:client:heal', function(type)
     if type == 'full' then
         resetAllInjuries()
     else
         resetMinorInjuries()
     end
+
     exports.qbx_core:Notify(Lang:t('success.wounds_healed'), 'success')
 
     return true
@@ -211,7 +213,7 @@ RegisterNetEvent('qbx_medical:client:playerRevived', function()
         local pos = GetEntityCoords(cache.ped)
         local vehicle = cache.vehicle
         local seat = cache.seat
-        NetworkResurrectLocalPlayer(pos.x, pos.y, pos.z, GetEntityHeading(cache.ped), true, false)
+        NetworkResurrectLocalPlayer(pos.x, pos.y, pos.z, GetEntityHeading(cache.ped), 0, false)
 
         if vehicle then
             SetPedIntoVehicle(cache.ped, vehicle, seat)

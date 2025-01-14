@@ -130,6 +130,8 @@ local function resetHungerAndThirst(player)
 		player = exports.qbx_core:GetPlayer(player)
 	end
 
+	if not player then return end
+
 	player.Functions.SetMetaData('hunger', 100)
 	player.Functions.SetMetaData('thirst', 100)
 	TriggerClientEvent('hud:client:UpdateNeeds', player.PlayerData.source, 100, 100)
@@ -167,7 +169,7 @@ lib.addCommand('kill', {
 		exports.qbx_core:Notify(source, Lang:t('error.not_online'), 'error')
 		return
 	end
-	lib.callback('qbx_medical:client:killPlayer', args.id)
+	lib.callback.await('qbx_medical:client:killPlayer', args.id)
 end)
 
 lib.addCommand('aheal', {
