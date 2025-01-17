@@ -35,13 +35,15 @@ end
 ---initialize settings from player object
 local function onPlayerLoaded()
     pcall(function() exports.spawnmanager:setAutoSpawn(false) end)
-
-    initHealthAndArmor(cache.ped, cache.playerId, QBX.PlayerData.metadata)
-    initDeathAndLastStand(QBX.PlayerData.metadata)
+    CreateThread(function()
+        Wait(1000)
+        initHealthAndArmor(cache.ped, cache.playerId, QBX.PlayerData.metadata)
+        initDeathAndLastStand(QBX.PlayerData.metadata)
+    end)
 end
 
 lib.onCache('ped', function(value)
-    if not LocalPlayer.state.isLoggedIn then return end
+    if not QBX?.PlayerData?.metadata then return end
 
     initHealthAndArmor(value, cache.playerId, QBX.PlayerData.metadata)
 end)
