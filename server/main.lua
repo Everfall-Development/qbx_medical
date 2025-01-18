@@ -23,7 +23,9 @@ RegisterNetEvent('QBCore:Server:OnPlayerLoaded', function()
 	playerState:set(DEATH_STATE_STATE_BAG, getDeathState(source), true)
 	playerState:set(BLEED_LEVEL_STATE_BAG, 0, true)
 	for bodyPartKey in pairs(sharedConfig.bodyParts) do
-		playerState:set(BODY_PART_STATE_BAG_PREFIX .. bodyPartKey, nil, true)
+		if playerState[BODY_PART_STATE_BAG_PREFIX .. bodyPartKey] ~= nil then
+			playerState:set(BODY_PART_STATE_BAG_PREFIX .. bodyPartKey, nil, true)
+		end
 	end
 end)
 
@@ -54,7 +56,7 @@ exports('Revive', revivePlayer)
 ---removes all ailments, sets to full health, and fills up hunger and thirst.
 ---@param src Source
 local function heal(src)
-	lib.callback('qbx_medical:client:heal', src, false, 'full')
+	lib.callback('qbx_medical:client:heal', src, nil, 'full')
 end
 
 exports('Heal', heal)
@@ -62,7 +64,7 @@ exports('Heal', heal)
 ---Removes any injuries with severity 2 or lower. Stops bleeding if bleed level is less than 3.
 ---@param src Source
 local function healPartially(src)
-	lib.callback('qbx_medical:client:heal', src, false, 'partial')
+	lib.callback('qbx_medical:client:heal', src, nil, 'partial')
 end
 
 exports('HealPartially', healPartially)
