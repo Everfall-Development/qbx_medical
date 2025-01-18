@@ -5,6 +5,9 @@ local allowRespawn = false
 local deadAnimDict = 'dead'
 local deadVehAnimDict = 'veh@low@front_ps@idle_duck'
 local deadVehAnim = 'sit'
+
+local playerState = LocalPlayer.state
+
 local function playDeadAnimation()
     local deadAnim = not QBX.PlayerData.metadata.ishandcuffed and 'dead_a' or 'dead_f'
 
@@ -13,13 +16,22 @@ local function playDeadAnimation()
 
     while DeathState == sharedConfig.deathState.DEAD do
         if cache.vehicle then
-            --if not IsEntityPlayingAnim(cache.ped, deadVehAnimDict, deadVehAnim, 3) then
-            lib.requestAnimDict(deadVehAnimDict, 5000)
-            TaskPlayAnim(cache.ped, deadVehAnimDict, deadVehAnim, 100.0, 100.0, -1, 1, 0, false, false, false)
-            -- end
-        else --if not IsEntityPlayingAnim(cache.ped, deadAnimDict, deadAnim, 3) then
-            lib.requestAnimDict(deadAnimDict, 5000)
-            TaskPlayAnim(cache.ped, deadAnimDict, deadAnim, 100.0, 100.0, -1, 1, 0, false, false, false)
+            if not IsEntityPlayingAnim(cache.ped, deadVehAnimDict, deadVehAnim, 3) then
+                lib.requestAnimDict(deadVehAnimDict, 5000)
+                TaskPlayAnim(cache.ped, deadVehAnimDict, deadVehAnim, 100.0, 100.0, -1, 1, 1 | 32, false, false, false)
+            end
+        else
+            if playerState.isCarried then
+                if not IsEntityPlayingAnim(cache.ped, "nm", "firemans_carry", 3) then
+                    lib.requestAnimDict("nm")
+                    TaskPlayAnim(cache.ped, "nm", "firemans_carry", 8.0, -8.0, -1, 1 | 32, 1.0, false, false, false)
+                end
+            else
+                if not IsEntityPlayingAnim(cache.ped, deadAnimDict, deadAnim, 3) then
+                    lib.requestAnimDict(deadAnimDict, 5000)
+                    TaskPlayAnim(cache.ped, deadAnimDict, deadAnim, 100.0, 100.0, -1, 1, 1 | 32, false, false, false)
+                end
+            end
         end
 
         Wait(0)
