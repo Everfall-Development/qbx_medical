@@ -50,6 +50,10 @@ function OnDeath()
     TriggerServerEvent('qbx_medical:server:onPlayerDied')
     TriggerEvent('InteractSound_CL:PlayOnOne', 'demo', 0.1)
 
+    if lib.progressActive() then
+        lib.cancelProgress()
+    end
+
     --WaitForPlayerToStopMoving()
 
     CreateThread(function()
@@ -64,7 +68,7 @@ function OnDeath()
     CreateThread(function()
         playDeadAnimation()
     end)
-    LocalPlayer.state:set('invBusy', true, false)
+    LocalPlayer.state.invBusy = true
     SetEntityInvincible(cache.ped, true)
     SetEntityHealth(cache.ped, GetEntityMaxHealth(cache.ped))
 

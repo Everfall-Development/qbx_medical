@@ -80,6 +80,10 @@ function StartLastStand()
         exports["lb-phone"]:ToggleOpen(false)
     end
 
+    if lib.progressActive() then
+        lib.cancelProgress()
+    end
+
     --Wait(1000)
     WaitForPlayerToStopMoving()
 
