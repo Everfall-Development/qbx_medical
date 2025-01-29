@@ -74,7 +74,7 @@ function OnDeath()
 
     --[[
     TriggerServerEvent('cd_dispatch:AddNotification', {
-        job_table = { "fire" },
+        job_table = { "sams" },
         coords = pos,
         title = "Downed Individual",
         message = "Citizens reporting a downed individual.",
