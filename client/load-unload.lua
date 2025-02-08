@@ -18,6 +18,7 @@ end
 ---@param metadata any
 local function initDeathAndLastStand(metadata)
     if metadata.isdead then
+        lib.print.info('Player was previously dead, resetting death date.')
         local doctorCount = lib.callback.await('qbx_ambulancejob:server:getNumDoctors', false)
 
         if doctorCount < 2 then
@@ -28,6 +29,7 @@ local function initDeathAndLastStand(metadata)
         OnDeath()
         AllowRespawn()
     elseif metadata.inlaststand then
+        lib.print.info('Player was previously in last stand, resetting last stand date.')
         StartLastStand()
     end
 end
@@ -49,6 +51,10 @@ lib.onCache('ped', function(value)
 end)
 
 AddEventHandler('QBCore:Client:OnPlayerLoaded', onPlayerLoaded)
+
+RegisterNetEvent("QBCore:Client:OnPlayerUnload", function()
+    TriggerEvent('qbx_medical:client:playerRevived')
+end)
 
 AddEventHandler('onResourceStart', function(resourceName)
     if cache.resource ~= resourceName then return end
