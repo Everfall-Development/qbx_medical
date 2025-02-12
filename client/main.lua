@@ -107,7 +107,8 @@ local function doLimbAlert()
     else
         limbDamageMsg = Lang:t('info.many_places')
     end
-    exports.qbx_core:Notify(limbDamageMsg, 'error')
+
+    lib.notify({ title = limbDamageMsg, type = 'error' })
 end
 
 ---sets ped animation to limping and prevents running.
@@ -165,7 +166,8 @@ end
 ---notify the player of bleeding to their body.
 function SendBleedAlert()
     if DeathState == sharedConfig.deathState.DEAD or BleedLevel == 0 then return end
-    exports.qbx_core:Notify(Lang:t('info.bleed_alert', { bleedstate = sharedConfig.bleedingStates[BleedLevel] }), 'inform')
+
+    lib.notify({ title = Lang:t('info.bleed_alert', { bleedstate = sharedConfig.bleedingStates[BleedLevel] }) })
 end
 
 exports('sendBleedAlert', SendBleedAlert)
@@ -193,7 +195,7 @@ lib.callback.register('qbx_medical:client:heal', function(type)
         resetMinorInjuries()
     end
 
-    exports.qbx_core:Notify(Lang:t('success.wounds_healed'), 'success')
+    lib.notify({ title = Lang:t('success.wounds_healed'), type = 'success' })
 
     return true
 end)
@@ -233,5 +235,6 @@ RegisterNetEvent('qbx_medical:client:playerRevived', function()
     ClearFacialIdleAnimOverride(cache.ped)
     ResetPedMovementClipset(cache.ped, 0.0)
     TriggerServerEvent('hud:server:RelieveStress', 100)
-    exports.qbx_core:Notify(Lang:t('info.healthy'), 'inform')
+
+    lib.notify({ title = Lang:t('info.healthy'), })
 end)
