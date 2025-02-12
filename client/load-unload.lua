@@ -12,6 +12,11 @@ local function initHealthAndArmor(ped, playerId, playerMetadata)
     SetPlayerHealthRechargeMultiplier(playerId, 0.0)
     SetPlayerHealthRechargeLimit(playerId, 0.0)
     SetPedArmour(ped, playerMetadata.armor)
+
+    local coords = GetEntityCoords(ped)
+    NetworkResurrectLocalPlayer(coords.x, coords.y, coords.z, GetEntityHeading(ped))
+    ClearPedTasksImmediately(ped)
+    RemoveAllPedWeapons(ped)
 end
 
 ---starts death or last stand based off of player's metadata
