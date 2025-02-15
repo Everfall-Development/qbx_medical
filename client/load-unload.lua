@@ -13,8 +13,6 @@ local function initHealthAndArmor(ped, playerId, playerMetadata)
     SetPlayerHealthRechargeLimit(playerId, 0.0)
     SetPedArmour(ped, playerMetadata.armor)
 
-    local coords = GetEntityCoords(ped)
-    NetworkResurrectLocalPlayer(coords.x, coords.y, coords.z, GetEntityHeading(ped))
     ClearPedTasksImmediately(ped)
     RemoveAllPedWeapons(ped)
 end
