@@ -21,7 +21,7 @@ end
 ---@param metadata any
 local function initDeathAndLastStand(metadata)
     if metadata.isdead then
-        lib.print.info('Player was previously dead, resetting death date.')
+        lib.print.info('Player was previously dead, resetting death state.')
         local doctorCount = lib.callback.await('qbx_ambulancejob:server:getNumDoctors', false)
 
         if doctorCount < 2 then
@@ -29,7 +29,8 @@ local function initDeathAndLastStand(metadata)
         else
             DeathTime = config.laststandReviveInterval
         end
-        OnDeath()
+
+        OnDeath(true)
         AllowRespawn()
     elseif metadata.inlaststand then
         lib.print.info('Player was previously in last stand, resetting last stand date.')

@@ -43,8 +43,11 @@ end
 exports('playDeadAnimation', playDeadAnimation)
 
 ---put player in death animation and make invincible
-function OnDeath()
-    if DeathState == sharedConfig.deathState.DEAD then return end
+function OnDeath(force)
+    if DeathState == sharedConfig.deathState.DEAD and not force then return end
+
+    lib.print.debug("OnDeath()")
+
     SetDeathState(sharedConfig.deathState.DEAD)
     TriggerEvent('qbx_medical:client:onPlayerDied')
     TriggerServerEvent('qbx_medical:server:onPlayerDied')
