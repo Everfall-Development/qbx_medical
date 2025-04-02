@@ -48,7 +48,7 @@ end
 ---enforce following arm disabilities on the player for a set time period:
 ---Disable left turns in vehicles; disable weapon firing for left arm injuries, and weapon aiming for right arm injuries.
 ---@param ped number the player's ped
----@param leftArmDamaged boolean true if the player's left arm is damaged, false if the right arm is damaged. 
+---@param leftArmDamaged boolean true if the player's left arm is damaged, false if the right arm is damaged.
 local function disableArms(ped, leftArmDamaged)
     local disableTimer = 15
     while disableTimer > 0 do
@@ -60,12 +60,12 @@ local function disableArms(ped, leftArmDamaged)
             if leftArmDamaged then
                 DisablePlayerFiring(cache.playerId, true) -- Disable weapon firing
             else
-                DisableControlAction(0, 25, true) -- Disable weapon aiming
+                DisableControlAction(0, 25, true)         -- Disable weapon aiming
             end
         end
 
         disableTimer -= 1
-        Wait(1)
+        Wait(0)
     end
 end
 
