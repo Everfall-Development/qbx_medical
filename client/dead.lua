@@ -96,7 +96,7 @@ function OnDeath(force)
     ]]
 end
 
-exports('killPlayer', OnDeath)
+exports('KillPlayer', OnDeath)
 
 local function respawn()
     local success = lib.callback.await('qbx_medical:server:respawn')
@@ -131,9 +131,9 @@ function AllowRespawn()
     end
 end
 
-exports('allowRespawn', AllowRespawn)
+exports('AllowRespawn', AllowRespawn)
 
-exports('disableRespawn', function()
+exports('DisableRespawn', function()
     allowRespawn = false
 end)
 

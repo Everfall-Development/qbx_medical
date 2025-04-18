@@ -1,4 +1,11 @@
 return {
+    ---@alias WoundLevelIndex number
+
+    ---@class WoundLevel
+    ---@field movementRate number
+    ---@field label string
+
+    ---@type WoundLevel[]
     woundLevels = {
         {
             movementRate = 0.98,
@@ -18,6 +25,7 @@ return {
         },
     },
 
+    ---@type string[]
     bleedingStates = { -- Translate bleeding alerts
         Lang:t('states.little_bleed'),
         Lang:t('states.bleed'),
