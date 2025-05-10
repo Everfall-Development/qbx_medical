@@ -170,6 +170,21 @@ return {
         [`WEAPON_SNSPISTOL_MK2`] = weaponClasses.SMALL_CALIBER,
         [`WEAPON_VINTAGEPISTOL`] = weaponClasses.SMALL_CALIBER,
 
+        [`WEAPON_FM1_P320`] = weaponClasses.SMALL_CALIBER,
+        [`WEAPON_FM1_M9A3`] = weaponClasses.SMALL_CALIBER,
+        [`WEAPON_FM1_P226`] = weaponClasses.SMALL_CALIBER,
+        [`WEAPON_FM1_GLOCK19`] = weaponClasses.SMALL_CALIBER,
+        [`WEAPON_FM1_CZ75`] = weaponClasses.SMALL_CALIBER,
+        [`WEAPON_FIVESEVEN`] = weaponClasses.SMALL_CALIBER,
+        [`WEAPON_M45A1FM`] = weaponClasses.SMALL_CALIBER,
+        [`WEAPON_2011`] = weaponClasses.SMALL_CALIBER,
+        [`WEAPON_ARPISTOLSUB`] = weaponClasses.SMALL_CALIBER,
+        [`WEAPON_SERVICEPISTOL_9MM`] = weaponClasses.SMALL_CALIBER,
+        [`WEAPON_SERVICEPISTOL_45`] = weaponClasses.SMALL_CALIBER,
+        [`WEAPON_SERVICEPISTOL_AUTO`] = weaponClasses.SMALL_CALIBER,
+        [`WEAPON_MP9`] = weaponClasses.SMALL_CALIBER,
+        [`WEAPON_TECPISTOL`] = weaponClasses.SMALL_CALIBER,
+
         --[[ Medium Caliber ]] --
         [`WEAPON_ADVANCEDRIFLE`] = weaponClasses.MEDIUM_CALIBER,
         [`WEAPON_ASSAULTSMG`] = weaponClasses.MEDIUM_CALIBER,
@@ -190,6 +205,21 @@ return {
         [`WEAPON_SPECIALCARBINE`] = weaponClasses.MEDIUM_CALIBER,
         [`WEAPON_SPECIALCARBINE_MK2`] = weaponClasses.MEDIUM_CALIBER,
 
+        [`WEAPON_VECTOR`] = weaponClasses.MEDIUM_CALIBER,
+        [`WEAPON_HK417`] = weaponClasses.MEDIUM_CALIBER,
+        [`WEAPON_FM1_HK416`] = weaponClasses.MEDIUM_CALIBER,
+        [`WEAPON_FM2_HK416`] = weaponClasses.MEDIUM_CALIBER,
+        [`WEAPON_HK416`] = weaponClasses.MEDIUM_CALIBER,
+        [`WEAPON_38SNUBNOSE`] = weaponClasses.MEDIUM_CALIBER,
+        [`WEAPON_38SPECIAL`] = weaponClasses.MEDIUM_CALIBER,
+        [`WEAPON_38SPECIAL_MK2`] = weaponClasses.MEDIUM_CALIBER,
+        [`WEAPON_44MAGNUM`] = weaponClasses.MEDIUM_CALIBER,
+        [`WEAPON_MK14`] = weaponClasses.MEDIUM_CALIBER,
+        [`WEAPON_ALPHA47`] = weaponClasses.MEDIUM_CALIBER,
+        [`WEAPON_M16A1`] = weaponClasses.MEDIUM_CALIBER,
+        [`WEAPON_MILITARYRIFLE`] = weaponClasses.MEDIUM_CALIBER,
+        [`WEAPON_BATTLERIFLE`] = weaponClasses.MEDIUM_CALIBER,
+
         --[[ High Caliber ]] --
         [`WEAPON_ASSAULTRIFLE`] = weaponClasses.HIGH_CALIBER,
         [`WEAPON_ASSAULTRIFLE_MK2`] = weaponClasses.HIGH_CALIBER,
@@ -205,6 +235,19 @@ return {
         [`WEAPON_RAILGUN`] = weaponClasses.HIGH_CALIBER,
         [`WEAPON_HEAVYRIFLE`] = weaponClasses.HIGH_CALIBER,
 
+        [`WEAPON_FM4_REMINGTON700`] = weaponClasses.HIGH_CALIBER,
+        [`WEAPON_FM3_REMINGTON700`] = weaponClasses.HIGH_CALIBER,
+        [`WEAPON_FM2_REMINGTON700`] = weaponClasses.HIGH_CALIBER,
+        [`WEAPON_FM1_REMINGTON700`] = weaponClasses.HIGH_CALIBER,
+        [`WEAPON_AKS74U`] = weaponClasses.HIGH_CALIBER,
+        [`WEAPON_FM1_SPEARLT`] = weaponClasses.HIGH_CALIBER,
+        [`WEAPON_FM2_SPEARLT`] = weaponClasses.HIGH_CALIBER,
+        [`WEAPON_FM3_SPEARLT`] = weaponClasses.HIGH_CALIBER,
+        [`WEAPON_FM4_SPEARLT`] = weaponClasses.HIGH_CALIBER,
+        [`WEAPON_FM5_SPEARLT`] = weaponClasses.HIGH_CALIBER,
+        [`WEAPON_FM6_SPEARLT`] = weaponClasses.HIGH_CALIBER,
+        [`WEAPON_M27`] = weaponClasses.HIGH_CALIBER,
+
         --[[ Shotguns ]] --
         [`WEAPON_ASSAULTSHOTGUN`] = weaponClasses.SHOTGUN,
         [`WEAPON_BULLUPSHOTGUN`] = weaponClasses.SHOTGUN,
@@ -214,6 +257,8 @@ return {
         [`WEAPON_PUMPSHOTGUN_MK2`] = weaponClasses.SHOTGUN,
         [`WEAPON_SAWNOFFSHOTGUN`] = weaponClasses.SHOTGUN,
         [`WEAPON_SWEEPERSHOTGUN`] = weaponClasses.SHOTGUN,
+
+        [`WEAPON_DOUBLEBARRELFM`] = weaponClasses.SHOTGUN,
 
         --[[ Animals ]]                                  --
         [`WEAPON_ANIMAL`] = weaponClasses.WILDLIFE,      -- Animal
@@ -228,6 +273,18 @@ return {
         [`WEAPON_KNIFE`] = weaponClasses.CUTTING,
         [`WEAPON_MACHETE`] = weaponClasses.CUTTING,
         [`WEAPON_SWITCHBLADE`] = weaponClasses.CUTTING,
+        [`WEAPON_BAYONET`] = weaponClasses.CUTTING,
+        [`WEAPON_SHIV`] = weaponClasses.CUTTING,
+        [`WEAPON_BUTTERFLYKNIFE`] = weaponClasses.CUTTING,
+        [`WEAPON_KARAMBIT`] = weaponClasses.CUTTING,
+
+        [`WEAPON_KATANA`] = weaponClasses.CUTTING,
+        [`WEAPON_KATANA_2`] = weaponClasses.CUTTING,
+        [`WEAPON_DRAGON_KATANA_RED`] = weaponClasses.CUTTING,
+        [`WEAPON_DRAGON_KATANA_BLUE`] = weaponClasses.CUTTING,
+        [`WEAPON_DRAGON_KATANA_YELLOW`] = weaponClasses.CUTTING,
+        [`WEAPON_DRAGON_KATANA_GREEN`] = weaponClasses.CUTTING,
+        [`WEAPON_DRAGON_KATANA_PURPLE`] = weaponClasses.CUTTING,
 
         --[[ Light Impact ]] --
         [`WEAPON_KNUCKLE`] = weaponClasses.LIGHT_IMPACT,
@@ -244,6 +301,10 @@ return {
         [`WEAPON_WRENCH`] = weaponClasses.HEAVY_IMPACT,
         [`WEAPON_RAMMED_BY_CAR`] = weaponClasses.HEAVY_IMPACT,
         [`WEAPON_RUN_OVER_BY_CAR`] = weaponClasses.HEAVY_IMPACT,
+
+        [`WEAPON_BATBARBED`] = weaponClasses.HEAVY_IMPACT,
+        [`WEAPON_NIGHTSTICK`] = weaponClasses.HEAVY_IMPACT,
+        [`WEAPON_COLBATON`] = weaponClasses.HEAVY_IMPACT,
 
         --[[ Explosives ]] --
         [`WEAPON_EXPLOSION`] = weaponClasses.EXPLOSIVE,
