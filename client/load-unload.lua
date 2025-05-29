@@ -7,6 +7,8 @@ local config = require 'config.client'
 local function initHealthAndArmor(ped, playerId, playerMetadata)
     if not playerMetadata then return end
 
+    lib.print.debug("initHealthAndArmor", playerMetadata.health, playerMetadata.armor)
+
     SetEntityMaxHealth(ped, 200)
     SetEntityHealth(ped, playerMetadata.health)
     SetPlayerHealthRechargeMultiplier(playerId, 0.0)
@@ -41,12 +43,15 @@ end
 ---initialize settings from player object
 local function onPlayerLoaded()
     pcall(function() exports.spawnmanager:setAutoSpawn(false) end)
-    CreateThread(function()
-        Wait(1000)
-        initHealthAndArmor(cache.ped, cache.playerId, QBX.PlayerData.metadata)
-        initDeathAndLastStand(QBX.PlayerData.metadata)
-    end)
+    lib.print.debug("onPlayerLoaded", QBX.PlayerData.metadata)
+
+    Wait(1000)
+
+    initHealthAndArmor(cache.ped, cache.playerId, QBX.PlayerData.metadata)
+    initDeathAndLastStand(QBX.PlayerData.metadata)
 end
+
+exports("InitializePlayer", onPlayerLoaded)
 
 lib.onCache('ped', function(value)
     if not QBX?.PlayerData?.metadata then return end
@@ -54,7 +59,7 @@ lib.onCache('ped', function(value)
     initHealthAndArmor(value, cache.playerId, QBX.PlayerData.metadata)
 end)
 
-AddEventHandler('QBCore:Client:OnPlayerLoaded', onPlayerLoaded)
+-- AddEventHandler('QBCore:Client:OnPlayerLoaded', onPlayerLoaded)
 
 RegisterNetEvent("QBCore:Client:OnPlayerUnload", function()
     TriggerEvent('qbx_medical:client:playerRevived')

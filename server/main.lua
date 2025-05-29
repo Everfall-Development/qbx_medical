@@ -123,6 +123,7 @@ exports('GetPlayerStatus', getPlayerStatus)
 
 ---@param amount number
 lib.callback.register('qbx_medical:server:setArmor', function(source, amount)
+	lib.print.debug('Setting armor for ' .. source .. ' to ' .. amount)
 	local player = exports.qbx_core:GetPlayer(source)
 	player.Functions.SetMetaData('armor', amount)
 end)
