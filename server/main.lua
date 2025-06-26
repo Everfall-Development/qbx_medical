@@ -1,5 +1,4 @@
 local sharedConfig = require 'config.shared'
-local logger = require '@qbx_core.modules.logger'
 
 ---@class Injury
 ---@field severity integer
@@ -198,5 +197,10 @@ lib.callback.register('qbx_medical:server:respawn', function(source)
 end)
 
 lib.callback.register('qbx_medical:server:log', function(_, event, message)
-	logger.log({ source = 'qbx_medical', event = event, message = message })
+	exports.ef_logs:Log({
+		event = 'medical',
+		subevent = event,
+		message = message,
+		source = source,
+	})
 end)
