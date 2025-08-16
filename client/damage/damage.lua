@@ -232,6 +232,14 @@ CreateThread(function()
     end
 end)
 
+CreateThread(function()
+    for weapon in pairs(require('@ox_inventory.data.weapons').Weapons) do
+        if not config.weapons[joaat(weapon)] then
+            lib.print.error("Weapon " .. weapon .. " is not in the medical configuration weapons table")
+        end
+    end
+end)
+
 exports('EnableDamageEffects', function()
     damageEffectsEnabled = true
 end)
