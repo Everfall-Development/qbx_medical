@@ -184,6 +184,7 @@ return {
         [`WEAPON_SERVICEPISTOL_AUTO`] = weaponClasses.SMALL_CALIBER,
         [`WEAPON_MP9`] = weaponClasses.SMALL_CALIBER,
         [`WEAPON_TECPISTOL`] = weaponClasses.SMALL_CALIBER,
+        [`WEAPON_G17`] = weaponClasses.SMALL_CALIBER,
 
         --[[ Medium Caliber ]] --
         [`WEAPON_ADVANCEDRIFLE`] = weaponClasses.MEDIUM_CALIBER,
@@ -206,25 +207,16 @@ return {
         [`WEAPON_SPECIALCARBINE_MK2`] = weaponClasses.MEDIUM_CALIBER,
 
         [`WEAPON_VECTOR`] = weaponClasses.MEDIUM_CALIBER,
-        [`WEAPON_HK417`] = weaponClasses.MEDIUM_CALIBER,
-        [`WEAPON_FM1_HK416`] = weaponClasses.MEDIUM_CALIBER,
-        [`WEAPON_FM2_HK416`] = weaponClasses.MEDIUM_CALIBER,
-        [`WEAPON_HK416`] = weaponClasses.MEDIUM_CALIBER,
-        [`WEAPON_38SNUBNOSE`] = weaponClasses.MEDIUM_CALIBER,
-        [`WEAPON_38SPECIAL`] = weaponClasses.MEDIUM_CALIBER,
-        [`WEAPON_38SPECIAL_MK2`] = weaponClasses.MEDIUM_CALIBER,
-        [`WEAPON_44MAGNUM`] = weaponClasses.MEDIUM_CALIBER,
-        [`WEAPON_MK14`] = weaponClasses.MEDIUM_CALIBER,
-        [`WEAPON_ALPHA47`] = weaponClasses.MEDIUM_CALIBER,
-        [`WEAPON_M16A1`] = weaponClasses.MEDIUM_CALIBER,
-        [`WEAPON_MILITARYRIFLE`] = weaponClasses.MEDIUM_CALIBER,
-        [`WEAPON_BATTLERIFLE`] = weaponClasses.MEDIUM_CALIBER,
+        [`WEAPON_MP7A2`] = weaponClasses.MEDIUM_CALIBER,
+        [`WEAPON_HKUMP`] = weaponClasses.MEDIUM_CALIBER,
+
 
         --[[ High Caliber ]] --
         [`WEAPON_ASSAULTRIFLE`] = weaponClasses.HIGH_CALIBER,
         [`WEAPON_ASSAULTRIFLE_MK2`] = weaponClasses.HIGH_CALIBER,
         [`WEAPON_COMBATMG`] = weaponClasses.HIGH_CALIBER,
         [`WEAPON_COMBATMG_MK2`] = weaponClasses.HIGH_CALIBER,
+        [`WEAPON_SNIPERRIFLE`] = weaponClasses.HIGH_CALIBER,
         [`WEAPON_HEAVYSNIPER`] = weaponClasses.HIGH_CALIBER,
         [`WEAPON_HEAVYSNIPER_MK2`] = weaponClasses.HIGH_CALIBER,
         [`WEAPON_MARKSMANRIFLE`] = weaponClasses.HIGH_CALIBER,
@@ -234,6 +226,7 @@ return {
         [`WEAPON_MUSKET`] = weaponClasses.HIGH_CALIBER,
         [`WEAPON_RAILGUN`] = weaponClasses.HIGH_CALIBER,
         [`WEAPON_HEAVYRIFLE`] = weaponClasses.HIGH_CALIBER,
+        [`WEAPON_TACTICALRIFLE`] = weaponClasses.HIGH_CALIBER,
 
         [`WEAPON_FM4_REMINGTON700`] = weaponClasses.HIGH_CALIBER,
         [`WEAPON_FM3_REMINGTON700`] = weaponClasses.HIGH_CALIBER,
@@ -247,6 +240,24 @@ return {
         [`WEAPON_FM5_SPEARLT`] = weaponClasses.HIGH_CALIBER,
         [`WEAPON_FM6_SPEARLT`] = weaponClasses.HIGH_CALIBER,
         [`WEAPON_M27`] = weaponClasses.HIGH_CALIBER,
+        [`WEAPON_HK417`] = weaponClasses.HIGH_CALIBER,
+        [`WEAPON_FM1_HK416`] = weaponClasses.HIGH_CALIBER,
+        [`WEAPON_FM2_HK416`] = weaponClasses.HIGH_CALIBER,
+        [`WEAPON_HK416`] = weaponClasses.HIGH_CALIBER,
+        [`WEAPON_38SNUBNOSE`] = weaponClasses.HIGH_CALIBER,
+        [`WEAPON_38SPECIAL`] = weaponClasses.HIGH_CALIBER,
+        [`WEAPON_38SPECIAL_MK2`] = weaponClasses.HIGH_CALIBER,
+        [`WEAPON_44MAGNUM`] = weaponClasses.HIGH_CALIBER,
+        [`WEAPON_38SNUBNOSE2`] = weaponClasses.HIGH_CALIBER,
+        [`WEAPON_38SNUBNOSE3`] = weaponClasses.HIGH_CALIBER,
+        [`WEAPON_MK14`] = weaponClasses.HIGH_CALIBER,
+        [`WEAPON_ALPHA47`] = weaponClasses.HIGH_CALIBER,
+        [`WEAPON_M16A1`] = weaponClasses.HIGH_CALIBER,
+        [`WEAPON_MILITARYRIFLE`] = weaponClasses.HIGH_CALIBER,
+        [`WEAPON_BATTLERIFLE`] = weaponClasses.HIGH_CALIBER,
+        [`WEAPON_FM42`] = weaponClasses.HIGH_CALIBER,
+        [`WEAPON_FM41`] = weaponClasses.HIGH_CALIBER,
+        [`WEAPON_PRECISIONRIFLE`] = weaponClasses.HIGH_CALIBER,
 
         --[[ Shotguns ]] --
         [`WEAPON_ASSAULTSHOTGUN`] = weaponClasses.SHOTGUN,
@@ -257,6 +268,9 @@ return {
         [`WEAPON_PUMPSHOTGUN_MK2`] = weaponClasses.SHOTGUN,
         [`WEAPON_SAWNOFFSHOTGUN`] = weaponClasses.SHOTGUN,
         [`WEAPON_SWEEPERSHOTGUN`] = weaponClasses.SHOTGUN,
+        [`WEAPON_COMBATSHOTGUN`] = weaponClasses.SHOTGUN,
+        [`WEAPON_AUTOSHOTGUN`] = weaponClasses.SHOTGUN,
+        [`WEAPON_BULLPUPSHOTGUN`] = weaponClasses.SHOTGUN,
 
         [`WEAPON_DOUBLEBARRELFM`] = weaponClasses.SHOTGUN,
 
@@ -288,6 +302,10 @@ return {
 
         --[[ Light Impact ]] --
         [`WEAPON_KNUCKLE`] = weaponClasses.LIGHT_IMPACT,
+        [`WEAPON_TOILETPAPER`] = weaponClasses.LIGHT_IMPACT,
+        [`WEAPON_SHOE`] = weaponClasses.LIGHT_IMPACT,
+        [`WEAPON_BALL`] = weaponClasses.LIGHT_IMPACT,
+        [`WEAPON_CONTROLLER`] = weaponClasses.LIGHT_IMPACT,
 
         --[[ Heavy Impact ]] --
         [`WEAPON_BAT`] = weaponClasses.HEAVY_IMPACT,
@@ -301,6 +319,9 @@ return {
         [`WEAPON_WRENCH`] = weaponClasses.HEAVY_IMPACT,
         [`WEAPON_RAMMED_BY_CAR`] = weaponClasses.HEAVY_IMPACT,
         [`WEAPON_RUN_OVER_BY_CAR`] = weaponClasses.HEAVY_IMPACT,
+        [`WEAPON_BEANBAG`] = weaponClasses.HEAVY_IMPACT,
+
+        [`WEAPON_BRICK`] = weaponClasses.HEAVY_IMPACT,
 
         [`WEAPON_BATBARBED`] = weaponClasses.HEAVY_IMPACT,
         [`WEAPON_NIGHTSTICK`] = weaponClasses.HEAVY_IMPACT,
