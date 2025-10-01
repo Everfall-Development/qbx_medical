@@ -84,6 +84,10 @@ function StartLastStand()
         lib.cancelProgress()
     end
 
+    if lib.skillCheckActive() then
+        lib.cancelSkillCheck()
+    end
+
     --Wait(1000)
     WaitForPlayerToStopMoving()
 

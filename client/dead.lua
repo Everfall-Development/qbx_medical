@@ -57,6 +57,10 @@ function OnDeath(force)
         lib.cancelProgress()
     end
 
+    if lib.skillCheckActive() then
+        lib.cancelSkillCheck()
+    end
+
     --WaitForPlayerToStopMoving()
 
     CreateThread(function()
