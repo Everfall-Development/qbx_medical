@@ -103,6 +103,11 @@ end
 exports('KillPlayer', OnDeath)
 
 local function respawn()
+    if LocalPlayer.state.inVar then
+        lib.notify({ title = 'You cannot respawn in the VAR. Use var:exit to exit the VAR.', type = 'error' })
+        return
+    end
+
     local success = lib.callback.await('qbx_medical:server:respawn')
     if not success then return end
     if exports.qbx_policejob:IsHandcuffed() then
