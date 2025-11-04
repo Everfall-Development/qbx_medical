@@ -61,10 +61,10 @@ return {
     staggerAreas = {
         SPINE = { armored = true, major = 60, minor = 30 },
         UPPER_BODY = { armored = false, major = 60, minor = 30 },
-        LLEG = { armored = true, major = 100, minor = 85 },
-        RLEG = { armored = true, major = 100, minor = 85 },
-        LFOOT = { armored = true, major = 100, minor = 100 },
-        RFOOT = { armored = true, major = 100, minor = 100 },
+        LLEG = { armored = true, major = 80, minor = 65 },
+        RLEG = { armored = true, major = 80, minor = 65 },
+        LFOOT = { armored = true, major = 100, minor = 80 },
+        RFOOT = { armored = true, major = 100, minor = 80 },
     },
 
     majorArmoredBleedChance = 45, -- The chance, in percent, that a player will get a bleed effect when taking heavy damage while wearing armor
@@ -88,6 +88,8 @@ return {
     alwaysBleedChanceWeapons = { -- Define which weapons will always cause bleedign
         [weaponClasses.SMALL_CALIBER] = true,
         [weaponClasses.MEDIUM_CALIBER] = true,
+        [weaponClasses.HIGH_CALIBER] = true,
+        [weaponClasses.SHOTGUN] = true,
         [weaponClasses.CUTTING] = true,
         [weaponClasses.WILDLIFE] = false,
     },
