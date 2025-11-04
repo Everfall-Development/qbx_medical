@@ -57,6 +57,7 @@ end
 ---health lost becomes a damaging event if a certain weapon was used or hp lost is above the force injury threshold.
 ---Otherwise, the probability of a damaging event goes up from 0 as the damageDone increases above the minimum threshold.
 ---@param damageDone number hitpoints lost
+---@param weaponClass WeaponClass
 ---@return boolean isDamagingEvent true if player should have disabilities from damage.
 local function isDamagingEvent(damageDone, weaponClass)
     local luck = math.random(100)
@@ -72,7 +73,7 @@ end
 ---@param armor number
 local function applyStaggerEffect(ped, isArmored, chance, armor)
     if not isArmored or armor > 0 or math.random(100) > math.ceil(chance) then return end
-    SetPedToRagdoll(ped, 1500, 2000, 3, true, true, false)
+    SetPedToRagdoll(ped, 300, 600, 3, true, true, false)
 end
 
 ---applies a minor bleed if player has no armor and is hit in a critical area.
