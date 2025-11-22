@@ -120,6 +120,7 @@ end
 
 exports('GetPlayerStatus', getPlayerStatus)
 
+---@param source Source
 ---@param amount number
 lib.callback.register('qbx_medical:server:setArmor', function(source, amount)
 	lib.print.debug('Setting armor for ' .. source .. ' to ' .. amount)
@@ -196,7 +197,7 @@ lib.callback.register('qbx_medical:server:respawn', function(source)
 	return true
 end)
 
-lib.callback.register('qbx_medical:server:log', function(_, event, message)
+lib.callback.register('qbx_medical:server:log', function(source, event, message)
 	exports.ef_logs:Log({
 		event = 'medical',
 		subevent = event,
