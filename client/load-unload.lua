@@ -1,4 +1,5 @@
 local config = require 'config.client'
+local sharedConfig = require 'config.shared'
 
 ---Initialize health and armor settings on the player's ped
 ---@param ped number
@@ -59,10 +60,24 @@ lib.onCache('ped', function(value)
     initHealthAndArmor(value, cache.playerId, QBX.PlayerData.metadata)
 end)
 
--- AddEventHandler('QBCore:Client:OnPlayerLoaded', onPlayerLoaded)
+AddEventHandler('QBCore:Client:OnPlayerLoaded', onPlayerLoaded)
 
 RegisterNetEvent("QBCore:Client:OnPlayerUnload", function()
-    TriggerEvent('qbx_medical:client:playerRevived')
+    Wait(500)
+
+    if DeathState ~= sharedConfig.deathState.ALIVE then
+        SetDeathState(sharedConfig.deathState.ALIVE)
+        SetEntityInvincible(cache.ped, false)
+        EndLastStand()
+        LocalPlayer.state:set('invBusy', false, false)
+    end
+
+    SetEntityMaxHealth(cache.ped, 200)
+    SetEntityHealth(cache.ped, 200)
+    ClearPedBloodDamage(cache.ped)
+    SetPlayerSprint(cache.playerId, true)
+    ClearFacialIdleAnimOverride(cache.ped)
+    ResetPedMovementClipset(cache.ped, 0.0)
 end)
 
 AddEventHandler('onResourceStart', function(resourceName)

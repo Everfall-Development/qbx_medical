@@ -28,7 +28,7 @@ RegisterNetEvent('QBCore:Server:OnPlayerLoaded', function()
 	end
 end)
 
-AddStateBagChangeHandler(DEATH_STATE_STATE_BAG, nil, function(bagName, _, value)
+AddStateBagChangeHandler(DEATH_STATE_STATE_BAG, '', function(bagName, _, value)
 	local playerId = GetPlayerFromStateBagName(bagName)
 	local player = exports.qbx_core:GetPlayer(playerId)
 
