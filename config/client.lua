@@ -159,6 +159,9 @@ return {
     weapons = { -- Correspond weapon names to their class number
         [`WEAPON_STUNGUN`] = weaponClasses.NONE,
         [`WEAPON_STUNGUN_MP`] = weaponClasses.NONE,
+        [`WEAPON_METALDETECTOR`] = weaponClasses.NONE,
+        [`WEAPON_PROLASER4`] = weaponClasses.NONE,
+
         --[[ Small Caliber ]] --
         [`WEAPON_PISTOL`] = weaponClasses.SMALL_CALIBER,
         [`WEAPON_COMBATPISTOL`] = weaponClasses.SMALL_CALIBER,
@@ -187,6 +190,9 @@ return {
         [`WEAPON_MP9`] = weaponClasses.SMALL_CALIBER,
         [`WEAPON_TECPISTOL`] = weaponClasses.SMALL_CALIBER,
         [`WEAPON_G17`] = weaponClasses.SMALL_CALIBER,
+        [`WEAPON_CERAMICPISTOL`] = weaponClasses.SMALL_CALIBER,
+        [`WEAPON_GADGETPISTOL`] = weaponClasses.SMALL_CALIBER,
+        [`WEAPON_PISTOLXM3`] = weaponClasses.SMALL_CALIBER,
 
         --[[ Medium Caliber ]] --
         [`WEAPON_ADVANCEDRIFLE`] = weaponClasses.MEDIUM_CALIBER,
@@ -211,7 +217,8 @@ return {
         [`WEAPON_VECTOR`] = weaponClasses.MEDIUM_CALIBER,
         [`WEAPON_MP7A2`] = weaponClasses.MEDIUM_CALIBER,
         [`WEAPON_HKUMP`] = weaponClasses.MEDIUM_CALIBER,
-
+        [`WEAPON_NAVYREVOLVER`] = weaponClasses.MEDIUM_CALIBER,
+        [`WEAPON_MUTANT_SHORT`] = weaponClasses.MEDIUM_CALIBER,
 
         --[[ High Caliber ]] --
         [`WEAPON_ASSAULTRIFLE`] = weaponClasses.HIGH_CALIBER,
@@ -241,6 +248,16 @@ return {
         [`WEAPON_FM4_SPEARLT`] = weaponClasses.HIGH_CALIBER,
         [`WEAPON_FM5_SPEARLT`] = weaponClasses.HIGH_CALIBER,
         [`WEAPON_FM6_SPEARLT`] = weaponClasses.HIGH_CALIBER,
+        [`WEAPON_DD11_C`] = weaponClasses.HIGH_CALIBER,
+        [`WEAPON_DD11_OD`] = weaponClasses.HIGH_CALIBER,
+        [`WEAPON_DD11_B`] = weaponClasses.HIGH_CALIBER,
+        [`WEAPON_DD14_C`] = weaponClasses.HIGH_CALIBER,
+        [`WEAPON_DD14_OD`] = weaponClasses.HIGH_CALIBER,
+        [`WEAPON_DD14_B`] = weaponClasses.HIGH_CALIBER,
+        [`WEAPON_DD16_C`] = weaponClasses.HIGH_CALIBER,
+        [`WEAPON_DD16_OD`] = weaponClasses.HIGH_CALIBER,
+        [`WEAPON_DD16_B`] = weaponClasses.HIGH_CALIBER,
+        [`WEAPON_MUTANT_LONG`] = weaponClasses.HIGH_CALIBER,
         [`WEAPON_M27`] = weaponClasses.HIGH_CALIBER,
         [`WEAPON_HK417`] = weaponClasses.HIGH_CALIBER,
         [`WEAPON_FM1_HK416`] = weaponClasses.HIGH_CALIBER,
@@ -302,12 +319,22 @@ return {
         [`WEAPON_DRAGON_KATANA_GREEN`] = weaponClasses.CUTTING,
         [`WEAPON_DRAGON_KATANA_PURPLE`] = weaponClasses.CUTTING,
 
+        [`WEAPON_CHEFS_KNIFE`] = weaponClasses.CUTTING,
+        [`WEAPON_FLATHEAD_SCREWDRIVER`] = weaponClasses.CUTTING,
+        [`WEAPON_SCREWDRIVER`] = weaponClasses.CUTTING,
+        [`WEAPON_STONE_HATCHET`] = weaponClasses.CUTTING,
+
         --[[ Light Impact ]] --
         [`WEAPON_KNUCKLE`] = weaponClasses.LIGHT_IMPACT,
         [`WEAPON_TOILETPAPER`] = weaponClasses.LIGHT_IMPACT,
         [`WEAPON_SHOE`] = weaponClasses.LIGHT_IMPACT,
         [`WEAPON_BALL`] = weaponClasses.LIGHT_IMPACT,
         [`WEAPON_CONTROLLER`] = weaponClasses.LIGHT_IMPACT,
+        [`WEAPON_CANDYCANE`] = weaponClasses.LIGHT_IMPACT,
+        [`WEAPON_SPATULA`] = weaponClasses.LIGHT_IMPACT,
+        [`WEAPON_LADLE`] = weaponClasses.LIGHT_IMPACT,
+        [`WEAPON_ROLLING_PIN`] = weaponClasses.LIGHT_IMPACT,
+        [`WEAPON_PEPPERMILL`] = weaponClasses.LIGHT_IMPACT,
 
         --[[ Heavy Impact ]] --
         [`WEAPON_BAT`] = weaponClasses.HEAVY_IMPACT,
@@ -329,6 +356,16 @@ return {
         [`WEAPON_NIGHTSTICK`] = weaponClasses.HEAVY_IMPACT,
         [`WEAPON_COLBATON`] = weaponClasses.HEAVY_IMPACT,
 
+        [`WEAPON_ADJUSTABLE_WRENCH`] = weaponClasses.HEAVY_IMPACT,
+        [`WEAPON_KETTLE`] = weaponClasses.HEAVY_IMPACT,
+        [`WEAPON_IMPACT_DRIVER`] = weaponClasses.HEAVY_IMPACT,
+        [`WEAPON_RATCHET_WRENCH`] = weaponClasses.HEAVY_IMPACT,
+        [`WEAPON_GOLFCLUB`] = weaponClasses.HEAVY_IMPACT,
+        [`WEAPON_IMPACT_WRENCH`] = weaponClasses.HEAVY_IMPACT,
+        [`WEAPON_CAST_IRON`] = weaponClasses.HEAVY_IMPACT,
+        [`WEAPON_FLASHLIGHT`] = weaponClasses.HEAVY_IMPACT,
+        [`WEAPON_WOK`] = weaponClasses.HEAVY_IMPACT,
+
         --[[ Explosives ]] --
         [`WEAPON_EXPLOSION`] = weaponClasses.EXPLOSIVE,
         [`WEAPON_GRENADE`] = weaponClasses.EXPLOSIVE,
@@ -340,12 +377,26 @@ return {
         [`WEAPON_STICKYBOMB`] = weaponClasses.EXPLOSIVE,
         [`WEAPON_HELI_CRASH`] = weaponClasses.EXPLOSIVE,
         [`WEAPON_EMPLAUNCHER`] = weaponClasses.EXPLOSIVE,
+        [`WEAPON_FIREWORK`] = weaponClasses.EXPLOSIVE,
+        [`WEAPON_GRENADELAUNCHER`] = weaponClasses.EXPLOSIVE,
+        [`WEAPON_GRENADELAUNCHER_SMOKE`] = weaponClasses.EXPLOSIVE,
+        [`WEAPON_HAZARDCAN`] = weaponClasses.EXPLOSIVE,
+        [`WEAPON_FERTILIZERCAN`] = weaponClasses.EXPLOSIVE,
+        [`WEAPON_STUNGRENADE`] = weaponClasses.EXPLOSIVE,
 
         --[[ Other ]]                                         --
         [`WEAPON_FALL`] = weaponClasses.OTHER,                -- Fall
         [`WEAPON_HIT_BY_WATER_CANNON`] = weaponClasses.OTHER, -- Water Cannon
+        [`WEAPON_FIREHOSE`] = weaponClasses.OTHER,
+        [`nass_paintball_gun`] = weaponClasses.OTHER,
+        [`WEAPON_SNOWLAUNCHER`] = weaponClasses.OTHER,
+        [`WEAPON_SNOWBALL`] = weaponClasses.OTHER,
+        [`WEAPON_RAYPISTOL`] = weaponClasses.OTHER,
+        [`WEAPON_RAYMINIGUN`] = weaponClasses.OTHER,
+        [`WEAPON_RAYCARBINE`] = weaponClasses.OTHER,
+        [`WEAPON_RAILGUNXM3`] = weaponClasses.OTHER,
 
-        --[[ Fire ]]                                          --
+        --[[ Fire ]] --
         [`WEAPON_ELECTRIC_FENCE`] = weaponClasses.FIRE,
         [`WEAPON_FIRE`] = weaponClasses.FIRE,
         [`WEAPON_MOLOTOV`] = weaponClasses.FIRE,
@@ -358,5 +409,8 @@ return {
         [`WEAPON_EXHAUSTION`] = weaponClasses.SUFFOCATING,          -- Exhaust
         [`WEAPON_BZGAS`] = weaponClasses.SUFFOCATING,
         [`WEAPON_SMOKEGRENADE`] = weaponClasses.SUFFOCATING,
+        [`WEAPON_TEARGAS`] = weaponClasses.SUFFOCATING,
+        [`WEAPON_PEPPERSPRAY`] = weaponClasses.SUFFOCATING,
+        [`WEAPON_ANTIDOTE`] = weaponClasses.SUFFOCATING,
     },
 }
