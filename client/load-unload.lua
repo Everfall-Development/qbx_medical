@@ -44,7 +44,6 @@ end
 ---initialize settings from player object
 local function onPlayerLoaded()
     pcall(function() exports.spawnmanager:setAutoSpawn(false) end)
-    lib.print.debug("onPlayerLoaded", QBX.PlayerData.metadata)
 
     Wait(1000)
 
